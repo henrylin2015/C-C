@@ -38,17 +38,16 @@ int main(){
     int ll = strlen(str1);
     printf("原来的字符串:%s\n", str1);
     char *ss = strll(str1,ll);
-    printf("倒置的字符串:%c\n",*ss);
-    printf("%c\n", *ss);
+    printf("倒置的字符串:");
     dumpStr(ss,ll);
     return 0;
 }
 
 char *strll(char *s,int len){
-    int low = *s;
+    int low = 0;
     int high = len -1;
     while (low < high) {
-        int temp = *(s+low);
+        char temp = *(s+low);
         *(s+low) = *(s+high);
         *(s+high) = temp;
         low++;
