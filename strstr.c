@@ -25,11 +25,44 @@ int getCount(char *p,char *str,int *count){ //c语言的精华所在，
     *count = tmp;
     return ret;
 }
+/***
+ * 出语言  字符串翻转
+ */
+int getNewStr(char *p,int len){
+    int ret = 0;
+    char *str = p;
+    int low = 0;
+    int high = len-1;
+    if(p ==NULL && len ==0){
+        ret = -1;
+        printf("func *p ==NULL && len ==0, %d\n",ret);
+        return ret;
+    }
+    while (low < high) {
+        char tmp = *(str+low);
+        *(str+low) = *(str+high);
+        *(str+high) = tmp;
+        low++;
+        high--;
+    }
+    return ret;
+}
 int main(){
     char *str = "abcd112233abdcdiijddfd12";
     char buf[] = "abcd";
     int count = 0;
     int ret;
+    char str2[50]="abcd";
+    printf("str2 = %s\n",str2);
+    int len = strlen(str2);
+    printf("len = %d\n",len);
+    int ret2;
+    ret2 = getNewStr(str2,len);
+    if(ret2 !=0){
+        printf("func getNewStr err:%d\n",ret2);
+        return ret2;
+    }
+    printf("翻转后 str2 = %s\n", str2);
     ret = getCount(str,buf,&count); //间接修改值
     if(ret != 0){
         printf("func getCount err:%d\n", ret);
